@@ -7,12 +7,12 @@ import csv
 
 locale.setlocale(locale.LC_ALL,'portuguese')
 
-#API Google  -> AIzaSyBpfZq_1seOTXcsJ-U7y7C0H9hdjaH1ZtA <-
+#API Google  -> xxxxxxxxxxxxxxxxxxxxxxxx <-
 
 # inicio
-# gestão de parametros
+# gestÃ£o de parametros
 parser = argparse.ArgumentParser(description='Gera ficheiro com as coordenadas (latitudes e longitudes) dos clientes')
-parser.add_argument('fx_clientes',  help='IN -> o nome do ficheiro com os endereços dos clientes (XLSX)')
+parser.add_argument('fx_clientes',  help='IN -> o nome do ficheiro com os endereÃ§os dos clientes (XLSX)')
 parser.add_argument('fx_coordenadas',  help='OUT -> o nome do ficheiro com as coordenadas dos clientes')
 args = parser.parse_args()
 #fxout = args.ficheiro
@@ -24,24 +24,6 @@ print args.fx_coordenadas
 
 import json
 import urllib2
-
-#url = "http://maps.google.com/maps/api/geocode/json?address=avenida%C2%A0da%C2%A0boavista,%C2%A01681+4100-132+porto&sensor=false&key=AIzaSyBpfZq_1seOTXcsJ-U7y7C0H9hdjaH1ZtA"
-#data = json.load(urllib2.urlopen(url))
-#print data
-#print data[u'results']
-
-#print "---"
-
-#print data[u'results'][0][u'geometry']
-
-#print "---"
-
-#print data[u'results'][0][u'geometry'][u'location']
-
-#print data[u'results'][0][u'geometry'][u'location'][u'lat']
-#print data[u'results'][0][u'geometry'][u'location'][u'lng']
-
-
 
 #inicio do processo
 
@@ -69,7 +51,7 @@ def loads(book,sheet,tabela,cursor):
 		
 		values.append(txt)
 		
-		url = "https://maps.google.com/maps/api/geocode/json?address="+txt+"&sensor=false&key=AIzaSyBpfZq_1seOTXcsJ-U7y7C0H9hdjaH1ZtA"
+		url = "https://maps.google.com/maps/api/geocode/json?address="+txt+"&sensor=false&key=xxxxxxxxxxxxxxxxxxxx"
 		data = json.load(urllib2.urlopen(url, timeout = 2))
 		
 			
@@ -107,7 +89,7 @@ def recursivo(cursor, nrmax):
 		values.append(row[0])
 		values.append(row[1])
 		
-		url = "https://maps.google.com/maps/api/geocode/json?address="+row[1]+"&sensor=false&key=AIzaSyBpfZq_1seOTXcsJ-U7y7C0H9hdjaH1ZtA"
+		url = "https://maps.google.com/maps/api/geocode/json?address="+row[1]+"&sensor=false&key=xxxxxxxxxxxxxxxxxxxxxxxxxx"
 		data = json.load(urllib2.urlopen(url, timeout = 2))
 		
 		try:
