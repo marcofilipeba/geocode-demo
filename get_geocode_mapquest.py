@@ -8,12 +8,11 @@ import geocoder
 
 locale.setlocale(locale.LC_ALL,'portuguese')
 
-#API Google  -> AIzaSyBpfZq_1seOTXcsJ-U7y7C0H9hdjaH1ZtA <-
 
 # inicio
-# gest„o de parametros
+# gest√£o de parametros
 parser = argparse.ArgumentParser(description='Gera ficheiro com as coordenadas (latitudes e longitudes) dos clientes')
-parser.add_argument('fx_clientes',  help='IN -> o nome do ficheiro com os endereÁos dos clientes (XLSX)')
+parser.add_argument('fx_clientes',  help='IN -> o nome do ficheiro com os endere√ßos dos clientes (XLSX)')
 parser.add_argument('fx_coordenadas',  help='OUT -> o nome do ficheiro com as coordenadas dos clientes')
 args = parser.parse_args()
 #fxout = args.ficheiro
@@ -25,23 +24,6 @@ print args.fx_coordenadas
 
 import json
 import urllib2
-
-#url = "http://maps.google.com/maps/api/geocode/json?address=avenida%C2%A0da%C2%A0boavista,%C2%A01681+4100-132+porto&sensor=false&key=AIzaSyBpfZq_1seOTXcsJ-U7y7C0H9hdjaH1ZtA"
-#data = json.load(urllib2.urlopen(url))
-#print data
-#print data[u'results']
-
-#print "---"
-
-#print data[u'results'][0][u'geometry']
-
-#print "---"
-
-#print data[u'results'][0][u'geometry'][u'location']
-
-#print data[u'results'][0][u'geometry'][u'location'][u'lat']
-#print data[u'results'][0][u'geometry'][u'location'][u'lng']
-
 
 
 #inicio do processo
@@ -66,39 +48,24 @@ def loads(book,sheet,tabela,cursor):
 		values.append(s.cell(row,0).value)
 
 		
-		#txt = remove_non_ascii(s.cell(row,3).value).replace(" ","%C2%A0")+"+"+remove_non_ascii(s.cell(row,5).value).replace(" ","%C2%A0")+"+"+remove_non_ascii(s.cell(row,6).value).replace(" ","%C2%A0")
-		
+				
 		print s.cell(row,3), s.cell(row,5), s.cell(row,6)
-
-		#txt = remove_non_ascii(s.cell(row,3).value).replace("†"," ")+" ,"+remove_non_ascii(s.cell(row,5).value).replace("†"," ")+" ,"+remove_non_ascii(s.cell(row,6).value).replace("†"," ")
-
-		#txt = s.cell(row,3).value.encode('utf-8') +" ,"+ s.cell(row,5).value.encode('utf-8') +" ,"+ s.cell(row,6).value.encode('utf-8')
 
 		txt = s.cell(row,3).value +" ,"+ s.cell(row,5).value +" ,"+ s.cell(row,6).value
 
 		values.append(txt)
 
 
-
-# import geocoder
-# g = geocoder.bing('rua Costa cabral 811, 4200, porto', key = 'Ar-sW38yqFrxA6D7OOMIvxLuD_Zx9WKOg33NJQ3NLl4pdFXy_S2PlR3jFqab8MWp')
-# g.json
-# {'status': 'OK', 'city': u'Porto', 'confidence': 9, 'neighborhood': u'Paranhos', 'encoding': 'utf-8', 'country': u'Portugal', 'provider': 'bing', 'location': 'rua Costa cabral 811, 4200, porto', 'state': u'Porto', 'street': u'Rua de Costa Cabral 811', 'bbox': {'northeast': [41.1681541, -8.5929867], 'southwest': [41.1659057, -8.5959733]}, 'status_code': 200, 'address': u'Rua de Costa Cabral 811, Porto, Porto 4200-224, Portugal', 'lat': 41.1670299, 'ok': True, 'lng': -8.59448, 'postal': u'4200-224', 'quality': u'Address', 'accuracy': u'Rooftop'}
-# g.json['lat']
-# 41.1670299
-# g.json['lng']
-# -8.59448
-
-		# processo antigo com o Google (cuja chave est· limitada a poucos calls)		
-		#url = "https://maps.google.com/maps/api/geocode/json?address="+txt+"&sensor=false&key=AIzaSyBpfZq_1seOTXcsJ-U7y7C0H9hdjaH1ZtA"
+		# processo antigo com o Google (cuja chave est√° limitada a poucos calls)		
+		#url = "https://maps.google.com/maps/api/geocode/json?address="+txt+"&sensor=false&key=zzzzzzzzzzzz"
 		#data = json.load(urllib2.urlopen(url, timeout = 2))
 		
-		# obtive a chave em https://developer.mapquest.com/user/me/apps entrando com a minha conta (marco.filipe@segafredo.pt)
+		# obtive a chave em https://developer.mapquest.com/user/me/apps entrando com a minha conta
 
 		#print txt
 
 		try:
-			data = geocoder.mapquest(txt, key = 'GrcHCtApEvRCh4g5DlPAOeVUXPxdU5jH')
+			data = geocoder.mapquest(txt, key = 'ccccccccccccccccccccccccccccccc')
 		
 
 			#print data.json
@@ -144,7 +111,7 @@ def recursivo(cursor, nrmax):
 		values.append(row[0])
 		values.append(row[1])
 		
-		url = "https://maps.google.com/maps/api/geocode/json?address="+row[1]+"&sensor=false&key=AIzaSyBpfZq_1seOTXcsJ-U7y7C0H9hdjaH1ZtA"
+		url = "https://maps.google.com/maps/api/geocode/json?address="+row[1]+"&sensor=false&key=zxzzzzzzzzzzzzzzzzzzzzzzzzzz"
 		data = json.load(urllib2.urlopen(url, timeout = 2))
 		
 		try:
